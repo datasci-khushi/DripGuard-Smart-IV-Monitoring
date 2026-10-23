@@ -1,141 +1,130 @@
-# DripGuard — Smart IV Infusion Monitoring and Prediction System
+# DripGuard: Smart IV Infusion Monitoring and Prediction System
 
-## 1. Project Overview
+## Software Repository
 
-DripGuard is a smart IV infusion monitoring prototype designed to monitor IV drip activity, display readings on a web dashboard, and provide visual and audio alerts based on the drip status.
+DripGuard is a software project designed to monitor IV infusion readings, display infusion status, maintain historical records, and present alerts through a web-based dashboard. The software is developed as an academic prototype.
 
-The system combines hardware components, a Python backend, a web dashboard, and an SQLite database to monitor and store IV readings.
+## Project Overview
 
-## 2. Project Components
+The software uses a Flask backend, a Streamlit dashboard, and an SQLite database to manage and display infusion-related data.
 
-### Hardware
+The dashboard provides a central interface for viewing current readings, reviewing historical data, checking alerts, and accessing configuration settings.
 
-* **NodeMCU ESP8266:** Microcontroller with 2.4 GHz Wi-Fi connectivity.
-* **LM393 IR Sensor Module:** Detects drops passing through the IV drip chamber.
-* **LED Indicators:** Green for normal, yellow for attention, and red for critical status.
-* **Active Buzzer:** Provides an audible alert.
-* **220Ω Resistors:** Used with the LED indicators.
-* **Breadboard and Jumper Wires:** Used for circuit connections.
-* **IV Administration Set:** Includes the drip chamber, tubing, roller clamp, and spike.
-* **USB Data Cable:** Used to upload code and power the NodeMCU.
+## Key Features
 
-### Software
+- **Dashboard:** Provides an overview of recorded infusion readings and system status.
+- **Live Monitoring:** Displays available infusion readings, such as drip rate, flow rate, bag volume, remaining time, and status.
+- **History:** Allows users to review previously recorded readings.
+- **Alerts:** Provides an interface for viewing recorded alerts.
+- **Database:** Uses SQLite to store infusion readings and timestamps.
+- **Settings:** Provides an interface for configuring infusion-related parameters through backend API requests.
 
-* Python backend for communication and processing.
-* Web dashboard for real-time monitoring and configuration.
-* SQLite database for storing monitoring readings.
-* DB Browser for SQLite for viewing and managing database records.
+## Technologies Used
 
-## 3. Hardware Connections
+| Technology | Purpose |
+|---|---|
+| Python | Main programming language |
+| Flask | Backend server and REST API |
+| Streamlit | Dashboard interface |
+| SQLite | Database storage |
+| Pandas | Data handling and tabular display |
+| Requests | HTTP communication between software components |
+| DB Browser for SQLite | Desktop application used to view, browse, and inspect SQLite database tables and records |
 
-| Component                | NodeMCU Pin |
-| ------------------------ | ----------- |
-| IR sensor digital output | D5          |
-| Green LED                | D1          |
-| Yellow LED               | D2          |
-| Red LED                  | D3          |
-| Active buzzer signal     | D6          |
-
-The LEDs are connected through 220Ω resistors. The sensor and other components must be powered according to their specifications, with compatible logic levels and a common ground.
-
-## 4. System Architecture
-
-1. The IR sensor detects drops in the IV drip chamber.
-2. The NodeMCU ESP8266 counts detected drops and calculates monitoring values.
-3. The NodeMCU communicates with the Python backend over Wi-Fi.
-4. The Python dashboard sends configurable settings, including bag volume, drip factor, and target drip rate, to the NodeMCU.
-5. The NodeMCU sends monitoring readings back to the backend.
-6. The dashboard displays the readings and status indicators.
-7. The backend stores monitoring readings in the SQLite database, which can be inspected using DB Browser for SQLite.
-
-## 5. Dashboard
-
-The DripGuard dashboard displays:
-
-* Total IV beds and their monitoring status.
-* Drip rate in drops per minute.
-* Flow rate in mL per minute.
-* Estimated remaining time.
-* Configured IV bag volume.
-* Normal, attention, and critical alerts.
-* Historical readings and database-related information.
-* Settings for bag volume, drip factor, and target drip rate.
-
-### Bed Monitoring
-
-| Bed ID | Monitoring Type                            |
-| ------ | ------------------------------------------ |
-| B01    | Connected to the physical NodeMCU hardware |
-| B02    | Simulated monitoring data                  |
-| B03    | Simulated monitoring data                  |
-| B04    | Simulated monitoring data                  |
-
-**Note:** B01 is the physical hardware-connected bed. B02, B03, and B04 display simulated readings and are not connected to separate physical monitoring units.
-
-## 6. SQLite Database
-
-DripGuard uses SQLite to store monitoring readings. DB Browser for SQLite is used as a graphical tool to inspect the database and its tables.
-
-The stored records can be reviewed to examine readings over time. Dashboard readings and database records depend on the backend's data-storage implementation.
-
-## 7. Alert Logic
-
-The current hardware code uses the configured target drip rate to determine status:
-
-* **Normal:** Drip rate is at least 80% of the configured target rate.
-* **Attention:** Drip rate is above zero but below 80% of the target.
-* **Critical:** No drops are detected during the measurement interval.
-
-The NodeMCU uses LEDs and the buzzer to indicate status according to the implemented code.
-
-## 8. Configuration
-
-The dashboard allows settings to be configured for a bed, including:
-
-* Bed ID
-* IV bag volume (mL)
-* Drip factor (drops/mL)
-* Target drip rate (drops/min)
-
-The NodeMCU periodically requests settings from the Python backend and uses them in its calculations.
-
-## 9. Repository Structure
-
-A suggested repository structure is:
+## Repository Structure
 
 ```text
-DripGuard/
-├── README.md
-├── hardware/
-│   └── nodemcu_firmware.ino
+.
 ├── backend/
-│   └── Python backend files
+│   └── app.py
 ├── dashboard/
-│   └── Dashboard files
-├── database/
-│   └── SQLite database file
-└── docs/
-    └── Project documentation
+│   └── app.py
+├── requirements.txt
+├── dashboard_code.pdf
+├── source_codes.pdf
+├── DripGuard_Presentation.pptx
+├── current_readings.jpg
+├── historical_readings.jpg
+└── README.md
 ```
 
-Adjust the folders and filenames to match the files actually present in your repository.
+## Software Components
 
-## 10. Limitations
+### 1. Flask Backend
 
-* Only B01 is connected to physical monitoring hardware.
-* B02, B03, and B04 use simulated data.
-* Wi-Fi connectivity depends on the network and hotspot configuration.
-* Drop detection and calculated values require further testing and validation.
-* This is an academic prototype and is not clinically validated for patient care.
+The backend is responsible for receiving requests, processing infusion-reading data, interacting with the SQLite database, and returning information through API endpoints.
 
-## 11. Future Improvements
+### 2. Streamlit Dashboard
 
-* Improve automatic Wi-Fi reconnection.
-* Improve sensor reliability and drop detection.
-* Connect additional physical monitoring units.
-* Enhance database history and reporting.
-* Perform extensive testing and validation before considering any clinical application.
+The dashboard provides the user interface for monitoring readings, viewing history and alerts, accessing database information, and managing available settings.
 
-## 12. Disclaimer
+### 3. SQLite Database
 
-DripGuard is developed for academic demonstration and prototyping. It must not be used as a substitute for approved medical equipment or clinical monitoring.
+The database stores infusion readings and associated information, including bed identification, drip rate, flow rate, bag volume, remaining time, status, and timestamp.
+
+### 4. Database Inspection Using DB Browser for SQLite
+
+DB Browser for SQLite is used to open and inspect the SQLite database file. It provides a visual interface for viewing database tables and records, reviewing current readings, and checking historical data during development and testing.
+
+## Setup and Execution
+
+### Prerequisites
+
+- Python 3.10 or a compatible version
+- pip (Python package installer)
+
+### 1. Download the Repository
+
+Clone the repository or download it from GitHub.
+
+### 2. Install Dependencies
+
+Open a terminal in the project directory and run:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Start the Backend
+
+From the project directory, run:
+
+```bash
+python backend/app.py
+```
+
+The backend code is configured to use port `5000`.
+
+### 4. Start the Dashboard
+
+Open a second terminal in the project directory and run:
+
+```bash
+streamlit run dashboard/app.py
+```
+
+The dashboard and backend must be configured to communicate with each other. If running on another computer or deployment environment, update the API address in the dashboard as needed.
+
+## Project Documentation
+
+- **Dashboard Code:** `dashboard_code.pdf`
+- **Source Code Collection:** `source_codes.pdf`
+- **Project Presentation:** `DripGuard_Presentation.pptx`
+- **Current Database Readings:** `current_readings.jpg`
+- **Historical Database Readings:** `historical_readings.jpg`
+
+## Project Scope and Safety
+
+DripGuard is an academic software prototype intended for project demonstration and development. Its monitoring, prediction, and alerting capabilities require appropriate testing and validation. It is not a certified medical device and must not be used to make clinical decisions or replace professional medical monitoring.
+
+## Future Improvements
+
+- Improve consistency between the backend API and dashboard.
+- Enhance real-time updates and data validation.
+- Improve alert handling and reporting.
+- Develop and validate prediction functionality using suitable historical data.
+- Add testing, error handling, and deployment configuration.
+
+## Conclusion
+
+DripGuard brings together a Python backend, a web-based monitoring dashboard, and database storage to organize and display IV infusion-related information. The project provides a foundation for further software development, integration, and testing.
