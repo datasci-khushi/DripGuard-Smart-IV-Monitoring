@@ -98,12 +98,12 @@ streamlit run dashboard/app.py
 
 ## Project Documentation
 
-- [Dashboard source code PDF](dashboard_code.pdf)
-- [Source code documentation PDF](source_codes.pdf)
-- [Dashboard visualizations PDF](dashboard_visualization.pdf)
-- [Project presentation](DripGuard_Presentation.pptx)
-- [Current database readings](current_readings.jpg)
-- [Historical database readings](historical_readings.jpg)
+- `dashboard_code.pdf` — Dashboard source code
+- `source_codes.pdf` — Source code documentation
+- `DripGuard_Presentation.pptx` — Project presentation
+- `dashboard_visualization.pdf` — Dashboard visualizations
+- `current_readings.jpg` — Current database readings
+- `historical_readings.jpg` — Historical database readings
 
 ## Project Scope and Safety
 
