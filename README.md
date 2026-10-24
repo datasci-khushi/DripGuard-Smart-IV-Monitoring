@@ -2,49 +2,49 @@
 
 ## Software Repository
 
-DripGuard is a software project designed to monitor IV infusion readings, display infusion status, maintain historical records, and present alerts through a web-based dashboard. The software is developed as an academic prototype.
+This repository contains the software components of DripGuard, a smart IV infusion monitoring and prediction system developed as an academic team project.
 
 ## Project Overview
 
-The software uses a Flask backend, a Streamlit dashboard, and an SQLite database to manage and display infusion-related data.
-
-The dashboard provides a central interface for viewing current readings, reviewing historical data, checking alerts, and accessing configuration settings.
+DripGuard is designed to monitor IV infusion readings, display current and historical data, and present alerts through a software dashboard. The system uses a Flask backend, a Streamlit dashboard, and an SQLite database.
 
 ## Key Features
 
-- **Dashboard:** Provides an overview of recorded infusion readings and system status.
-- **Live Monitoring:** Displays available infusion readings, such as drip rate, flow rate, bag volume, remaining time, and status.
-- **History:** Allows users to review previously recorded readings.
-- **Alerts:** Provides an interface for viewing recorded alerts.
-- **Database:** Uses SQLite to store infusion readings and timestamps.
-- **Settings:** Provides an interface for configuring infusion-related parameters through backend API requests.
+- Live IV infusion monitoring dashboard
+- Display of current infusion readings
+- Historical readings and data visualization
+- Alert display for infusion monitoring
+- SQLite database for storing and inspecting readings
+- Dashboard settings interface
 
 ## Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| Python | Main programming language |
-| Flask | Backend server and REST API |
-| Streamlit | Dashboard interface |
-| SQLite | Database storage |
-| Pandas | Data handling and tabular display |
-| Requests | HTTP communication between software components |
-| DB Browser for SQLite | Desktop application used to view, browse, and inspect SQLite database tables and records |
+- Python
+- Flask
+- Streamlit
+- SQLite
+- Pandas
+- Requests
+- DB Browser for SQLite — desktop application used to inspect database tables and records
 
 ## Repository Structure
 
 ```text
-.
+DripGuard-Smart-IV-Monitoring/
+│
 ├── backend/
 │   └── app.py
+│
 ├── dashboard/
 │   └── app.py
-├── requirements.txt
+│
 ├── dashboard_code.pdf
 ├── source_codes.pdf
+├── dashboard_visualization.pdf
 ├── DripGuard_Presentation.pptx
 ├── current_readings.jpg
 ├── historical_readings.jpg
+├── requirements.txt
 └── README.md
 ```
 
@@ -52,78 +52,69 @@ The dashboard provides a central interface for viewing current readings, reviewi
 
 ### 1. Flask Backend
 
-The backend is responsible for receiving requests, processing infusion-reading data, interacting with the SQLite database, and returning information through API endpoints.
+The backend handles API requests and works with the SQLite database to provide infusion readings and related information.
 
 ### 2. Streamlit Dashboard
 
-The dashboard provides the user interface for monitoring readings, viewing history and alerts, accessing database information, and managing available settings.
+The dashboard provides an interface for viewing monitoring information, historical readings, alerts, and database-related information.
 
 ### 3. SQLite Database
 
-The database stores infusion readings and associated information, including bed identification, drip rate, flow rate, bag volume, remaining time, status, and timestamp.
+SQLite stores infusion reading records, including drip rate, flow rate, bag volume, remaining time, status, and timestamp.
 
-### 4. Database Inspection Using DB Browser for SQLite
+### 4. Database Inspection
 
-DB Browser for SQLite is used to open and inspect the SQLite database file. It provides a visual interface for viewing database tables and records, reviewing current readings, and checking historical data during development and testing.
+DB Browser for SQLite is used as a desktop application to view and inspect the SQLite database and its records.
 
 ## Setup and Execution
 
 ### Prerequisites
 
-- Python 3.10 or a compatible version
-- pip (Python package installer)
+- Python installed on your computer
+- Required Python packages installed
+- Project files downloaded from this repository
 
-### 1. Download the Repository
-
-Clone the repository or download it from GitHub.
-
-### 2. Install Dependencies
-
-Open a terminal in the project directory and run:
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start the Backend
-
-From the project directory, run:
+### Run the Backend
 
 ```bash
 python backend/app.py
 ```
 
-The backend code is configured to use port `5000`.
+### Run the Dashboard
 
-### 4. Start the Dashboard
-
-Open a second terminal in the project directory and run:
+Open a separate terminal and run:
 
 ```bash
 streamlit run dashboard/app.py
 ```
 
-The dashboard and backend must be configured to communicate with each other. If running on another computer or deployment environment, update the API address in the dashboard as needed.
+**Note:** The backend and dashboard may require configuration or API adjustments to work together correctly.
 
 ## Project Documentation
 
-- **Dashboard Code:** `dashboard_code.pdf`
-- **Source Code Collection:** `source_codes.pdf`
-- **Project Presentation:** `DripGuard_Presentation.pptx`
-- **Current Database Readings:** `current_readings.jpg`
-- **Historical Database Readings:** `historical_readings.jpg`
+- [Dashboard source code PDF](dashboard_code.pdf)
+- [Source code documentation PDF](source_codes.pdf)
+- [Dashboard visualizations PDF](dashboard_visualization.pdf)
+- [Project presentation](DripGuard_Presentation.pptx)
+- [Current database readings](current_readings.jpg)
+- [Historical database readings](historical_readings.jpg)
 
 ## Project Scope and Safety
 
-DripGuard is an academic software prototype intended for project demonstration and development. Its monitoring, prediction, and alerting capabilities require appropriate testing and validation. It is not a certified medical device and must not be used to make clinical decisions or replace professional medical monitoring.
+DripGuard is an academic prototype developed for educational and demonstration purposes. It is not a certified medical device and must not be used to make clinical decisions or replace professional medical supervision.
 
 ## Future Improvements
 
-- Improve consistency between the backend API and dashboard.
-- Enhance real-time updates and data validation.
-- Improve alert handling and reporting.
-- Develop and validate prediction functionality using suitable historical data.
-- Add testing, error handling, and deployment configuration.
+- Integration with physical infusion monitoring hardware
+- Improved prediction and alert mechanisms
+- Enhanced data visualization
+- Further testing and validation of the complete system
 
 ## Project Team
 
@@ -135,4 +126,4 @@ This project was developed collaboratively as part of an academic project.
 
 ## Conclusion
 
-DripGuard brings together a Python backend, a web-based monitoring dashboard, and database storage to organize and display IV infusion-related information. The project provides a foundation for further software development, integration, and testing.
+DripGuard demonstrates a software-based approach to IV infusion monitoring using a Flask backend, a Streamlit dashboard, and an SQLite database. The project provides a foundation for future development and integration with hardware components.
