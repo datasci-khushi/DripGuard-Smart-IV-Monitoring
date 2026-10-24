@@ -125,6 +125,14 @@ DripGuard is an academic software prototype intended for project demonstration a
 - Develop and validate prediction functionality using suitable historical data.
 - Add testing, error handling, and deployment configuration.
 
+## Project Team
+
+This project was developed collaboratively as part of an academic project.
+
+- **Khushi Patil**
+- **Swati Mahto**
+- **Mrunali Kamble**
+
 ## Conclusion
 
 DripGuard brings together a Python backend, a web-based monitoring dashboard, and database storage to organize and display IV infusion-related information. The project provides a foundation for further software development, integration, and testing.
